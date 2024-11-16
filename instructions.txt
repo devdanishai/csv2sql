@@ -1,0 +1,18 @@
+pip install -r requirements.txt
+uvicorn main:app --reload
+
+
+project_root/
+│
+├── downloads/            # Directory for downloaded files or external resources
+│
+├── static/
+│   └── index.html        # Directory to temporarily store uploaded files
+│
+├── uploads/              # Directory for temporary uploaded files
+│
+├── main.py               # Main application file
+│
+├── requirements.txt      # List of dependencies
+│
+└── README.md             # Project documentation

@@ -1,0 +1,70 @@
+CREATE TABLE IF NOT EXISTS GDP_of_Pakistan_1960_2021 (
+    Years TEXT,
+    GDP TEXT,
+    GDP_Per_Capita TEXT,
+    Growth TEXT,
+    Annual_Change TEXT
+);
+
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2021, '$348.26B', '$1,505', '6.49%', '7.76%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2020, '$300.43B', '$1,322', '-1.27%', '-3.77%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2019, '$320.91B', '$1,437', '2.50%', '-3.65%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2018, '$356.13B', '$1,621', '6.15%', '1.72%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2017, '$339.21B', '$1,568', '4.43%', '-1.09%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2016, '$313.63B', '$1,469', '5.53%', '0.80%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2015, '$270.56B', '$1,282', '4.73%', '0.06%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2014, '$244.36B', '$1,173', '4.67%', '0.28%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2013, '$231.22B', '$1,126', '4.40%', '0.89%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2012, '$224.38B', '$1,110', '3.51%', '0.76%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2011, '$213.59B', '$1,075', '2.75%', '1.14%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2010, '$177.17B', '$911', '1.61%', '-1.23%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2009, '$168.15B', '$884', '2.83%', '1.13%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2008, '$170.08B', '$915', '1.70%', '-3.13%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2007, '$152.39B', '$838', '4.83%', '-1.07%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2006, '$137.26B', '$771', '5.90%', '-0.62%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2005, '$120.06B', '$689', '6.52%', '-1.03%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2004, '$107.76B', '$631', '7.55%', '1.77%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2003, '$91.76B', '$550', '5.78%', '3.27%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2002, '$79.90B', '$489', '2.51%', '-1.05%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2001, '$79.48B', '$499', '3.55%', '-0.71%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (2000, '$82.02B', '$531', '4.26%', '0.60%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1999, '$62.97B', '$421', '3.66%', '1.11%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1998, '$62.19B', '$428', '2.55%', '1.54%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1997, '$62.43B', '$442', '1.01%', '-3.83%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1996, '$63.32B', '$461', '4.85%', '-0.12%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1995, '$60.64B', '$456', '4.96%', '1.23%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1994, '$52.29B', '$405', '3.74%', '1.98%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1993, '$51.81B', '$413', '1.76%', '-5.95%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1992, '$48.88B', '$399', '7.71%', '2.64%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1991, '$45.63B', '$383', '5.06%', '0.60%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1990, '$40.01B', '$347', '4.46%', '-0.50%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1989, '$40.17B', '$360', '4.96%', '-2.67%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1988, '$38.47B', '$356', '7.63%', '1.17%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1987, '$33.35B', '$320', '6.45%', '0.95%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1986, '$31.90B', '$317', '5.50%', '-2.09%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1985, '$31.14B', '$321', '7.59%', '2.53%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1984, '$31.15B', '$331', '5.07%', '-1.71%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1983, '$28.69B', '$315', '6.78%', '0.24%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1982, '$30.73B', '$350', '6.54%', '-1.38%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1981, '$28.10B', '$333', '7.92%', '-2.29%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1980, '$23.65B', '$293', '10.22%', '6.46%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1979, '$19.69B', '$254', '3.76%', '-4.29%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1978, '$17.81B', '$238', '8.05%', '4.10%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1977, '$15.13B', '$209', '3.95%', '-1.21%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1976, '$13.17B', '$187', '5.16%', '0.94%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1975, '$11.23B', '$165', '4.21%', '0.67%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1974, '$8.90B', '$135', '3.54%', '-3.52%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1973, '$6.38B', '$99', '7.06%', '6.25%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1972, '$9.42B', '$151', '0.81%', '0.35%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1971, '$10.67B', '$175', '0.47%', '-10.89%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1970, '$10.03B', '$169', '11.35%', '5.85%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1969, '$8.68B', '$151', '5.51%', '-1.73%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1968, '$8.04B', '$143', '7.23%', '1.83%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1967, '$7.46B', '$137', '5.40%', '-0.39%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1966, '$6.56B', '$123', '5.79%', '-4.63%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1965, '$5.93B', '$114', '10.42%', '2.85%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1964, '$5.20B', '$103', '7.57%', '-1.12%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1963, '$4.63B', '$94', '8.69%', '4.21%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1962, '$4.31B', '$89', '4.48%', '-1.50%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1961, '$4.12B', '$88', '5.99%', '-1.50%');
+INSERT INTO GDP_of_Pakistan_1960_2021 VALUES (1960, '$3.75B', '$82', '%', '%');

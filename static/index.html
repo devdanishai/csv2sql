@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel/CSV to SQL Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #343434;
+            min-height: 100vh;
+        }
+        .page-wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+            min-height: calc(100vh - 40px); /* Subtract body padding */
+        }
+        .steps-section {
+            flex: 0 0 250px;
+            background: #05fbff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            min-height: calc(100vh - 40px); /* Subtract body padding */
+        }
+        .step-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 3px solid #05fbff;
+            background: rgba(255, 255, 255, 0.5);
+        }
+        .container {
+            flex: 1;
+            background-color: #282828;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: white;
+            min-height: calc(100vh - 40px); /* Subtract body padding */
+        }
+        .decorative-section {
+            flex: 0 0 200px;
+            background: #05fbff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            min-height: calc(100vh - 40px); /* Subtract body padding */
+        }
+        .upload-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .upload-area.dragover {
+            background-color: #333;
+            border-color: #05fbff;
+        }
+        .btn {
+            background-color: #05fbff;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #04e0e3;
+            transform: translateY(-1px);
+        }
+        .btn:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+            padding: 10px;
+        }
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+            padding: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #05fbff;
+            margin-bottom: 30px;
+        }
+        .data-icon {
+            text-align: center;
+            font-size: 48px;
+            margin: 20px 0;
+            color: #000000;
+        }
+        .conversion-stat {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Left Section - Steps -->
+        <div class="steps-section">
+            <h3>How It Works</h3>
+            <div class="step-item">
+                <strong>Step 1:</strong> Choose your Excel or CSV file by dragging and dropping or clicking the upload button.
+            </div>
+            <div class="step-item">
+                <strong>Step 2:</strong> Verify your file details in the information section.
+            </div>
+            <div class="step-item">
+                <strong>Step 3:</strong> Click "Convert to SQL" to process your file.
+            </div>
+            <div class="step-item">
+                <strong>Step 4:</strong> Download your converted SQL file.
+            </div>
+        </div>
+
+        <!-- Center Section - Main Container -->
+        <div class="container">
+            <h1>Excel/CSV to SQL Converter</h1>
+
+            <div class="upload-area" id="dropZone">
+                <p>Drag and drop files here or</p>
+                <input type="file" id="fileInput" accept=".csv,.xls,.xlsx" style="display: none">
+                <button class="btn" onclick="document.getElementById('fileInput').click()">Choose File</button>
+            </div>
+
+            <div id="fileInfo"></div>
+            <button class="btn" id="uploadButton" disabled>Convert to SQL</button>
+            <div id="result"></div>
+        </div>
+
+        <!-- Right Section - Decorative Elements -->
+        <div class="decorative-section">
+            <div class="data-icon">📊</div>
+            <div class="conversion-stat">
+                <strong>Supported Formats</strong>
+                <p>.csv, .xls, .xlsx</p>
+            </div>
+            <div class="conversion-stat">
+                <strong>Max File Size</strong>
+                <p>100 MB</p>
+            </div>
+            <div class="conversion-stat">
+                <strong>Processing Time</strong>
+                <p>~2-3 seconds</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileInfo = document.getElementById('fileInfo');
+        const uploadButton = document.getElementById('uploadButton');
+        const result = document.getElementById('result');
+
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        // Highlight drop zone when item is dragged over it
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropZone.classList.add('dragover');
+        }
+
+        function unhighlight(e) {
+            dropZone.classList.remove('dragover');
+        }
+
+        dropZone.addEventListener('drop', handleDrop, false);
+        fileInput.addEventListener('change', handleFileSelect, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        function handleFileSelect(e) {
+            const files = e.target.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                const validTypes = ['.csv', '.xls', '.xlsx'];
+                const fileExtension = file.name.toLowerCase().substr(file.name.lastIndexOf('.'));
+
+                if (validTypes.includes(fileExtension)) {
+                    fileInfo.textContent = `Selected file: ${file.name} (${formatFileSize(file.size)})`;
+                    uploadButton.disabled = false;
+                    result.textContent = '';
+                    result.className = '';
+
+                    uploadButton.onclick = () => uploadFile(file);
+                } else {
+                    fileInfo.textContent = 'Invalid file type. Please select a CSV or Excel file.';
+                    uploadButton.disabled = true;
+                }
+            }
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        async function uploadFile(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            uploadButton.disabled = true;
+            result.textContent = 'Converting file...';
+            result.className = '';
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    result.className = 'success';
+                    result.innerHTML = `
+                        <p>✅ File converted successfully!</p>
+                        <p><a href="http://127.0.0.1:8000/download/${data.sql_file}" class="btn">Download SQL file</a></p>
+                    `;
+                } else {
+                    throw new Error(data.message || 'Conversion failed');
+                }
+            } catch (error) {
+                result.className = 'error';
+                result.innerHTML = `
+                    <p>❌ Error: ${error.message}</p>
+                    <p>Please try again or contact support if the problem persists.</p>
+                `;
+            } finally {
+                uploadButton.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
