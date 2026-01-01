@@ -46,7 +46,7 @@ This stack is primarily focused on creating web APIs with file handling, data pr
 create following folder
 - downloads
 - uploads
-- static/index.html
+- static/index.htmlr
 - main.py
 - readme.md
 - requirements.txt
@@ -54,3 +54,4 @@ create following folder
 
 1. 2025-12-26
 2. 2025-12-30
+3. 2026-01-01
